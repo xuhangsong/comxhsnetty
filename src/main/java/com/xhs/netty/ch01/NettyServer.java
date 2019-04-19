@@ -37,7 +37,6 @@ public class NettyServer {
                         pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
                         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
                         pipeline.addLast(new TcpServerHandler());
-
                     }
                 });
         ChannelFuture channelFuture = serverBootstrap.bind(IP,PORT).sync();
