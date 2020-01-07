@@ -21,20 +21,20 @@ public class Client {
     private PrintWriter printWriter;
 
     public Client() throws IOException {
-        socket = new Socket("127.0.0.1",DEFALT_SERVER_PORT);
-        printWriter = new PrintWriter(socket.getOutputStream(),true);
+        socket = new Socket("127.0.0.1", DEFALT_SERVER_PORT);
+        printWriter = new PrintWriter(socket.getOutputStream(), true);
     }
 
     public void send(String str) throws IOException {
-        if(socket==null){
+        if (socket == null) {
             System.out.println(("socket 没有初始化"));
             return;
         }
         printWriter.println(str);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        while(true){
+        while (true) {
             String result = null;
-            if((result = bufferedReader.readLine())==null) break;
+            if ((result = bufferedReader.readLine()) == null) break;
             System.out.println(result);
         }
     }
